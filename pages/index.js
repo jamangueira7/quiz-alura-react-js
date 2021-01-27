@@ -4,6 +4,8 @@ import Head from 'next/head'
 import db from '../db.json';
 
 import Widget from '../src/components/Widget';
+import Footer from '../src/components/Footer';
+import GitHubCorner from '../src/components/GitHubCorner';
 
 const Title = styled.h1`
     font-size: 50px;
