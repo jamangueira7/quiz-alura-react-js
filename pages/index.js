@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Head from 'next/head'
 import db from '../db.json';
 
 import Widget from '../src/components/Widget';
@@ -19,32 +18,29 @@ export const QuizContainer = styled.div`
   }
 `;
 
-
 export default function Home() {
   return (
-      <QuizBackground backgroundImage={db.bg}>
-          <QuizContainer>
-              <Widget>
-                  <Widget.Header>
-                      <h1>The legend of zelda</h1>
-                  </Widget.Header>
-                  <Widget.Content>
-                      <p>fasdjflasdfa aflkaj flasldkjf aewf jaljfv alskjfljea fjejflejjetrj...</p>
-                  </Widget.Content>
-              </Widget>
-              <Widget>
-                  <Widget.Header>
-                      <h1>Quizes da galera</h1>
-                  </Widget.Header>
-                  <Widget.Content>
-                      <p>fasdjflasdfa aflkaj flasldkjf aewf jaljfv alskjfljea fjejflejjetrj...</p>
-                  </Widget.Content>
-              </Widget>
-              <Footer>
-
-              </Footer>
-          </QuizContainer>
-          <GitHubCorner projectUrl="https://github.com/jamangueira7" />
-      </QuizBackground>
+    <QuizBackground backgroundImage={db.bg}>
+      <QuizContainer>
+        <Widget>
+          <Widget.Header>
+            <h1>The legend of zelda</h1>
+          </Widget.Header>
+          <Widget.Content>
+            <p>fasdjflasdfa aflkaj flasldkjf aewf jaljfv alskjfljea fjejflejjetrj...</p>
+          </Widget.Content>
+        </Widget>
+        <Widget>
+          <Widget.Header>
+            <h1>Quizes da galera</h1>
+          </Widget.Header>
+          <Widget.Content>
+            <p>fasdjflasdfa aflkaj flasldkjf aewf jaljfv alskjfljea fjejflejjetrj...</p>
+          </Widget.Content>
+        </Widget>
+        <Footer />
+      </QuizContainer>
+      <GitHubCorner projectUrl="https://github.com/jamangueira7" />
+    </QuizBackground>
   );
 }
