@@ -4,22 +4,11 @@ import Head from 'next/head'
 import db from '../db.json';
 
 import Widget from '../src/components/Widget';
+import QuizBackground from '../src/components/QuizBackground';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
 
-const Title = styled.h1`
-    font-size: 50px;
-    color: ${({ theme }) => theme.colors.primary} ;
-`;
-
-const BackgroundImage = styled.div`
-    background-image: url(${db.bg});
-    flex:1;
-    background-size: cover;
-    background-position: center;
-`;
-
-const QuizContainer = styled.div`
+export const QuizContainer = styled.div`
   width: 100%;
   max-width: 350px;
   padding-top: 45px;
@@ -33,7 +22,7 @@ const QuizContainer = styled.div`
 
 export default function Home() {
   return (
-      <BackgroundImage>
+      <QuizBackground backgroundImage={db.bg}>
           <QuizContainer>
               <Widget>
                   <Widget.Header>
@@ -51,7 +40,11 @@ export default function Home() {
                       <p>fasdjflasdfa aflkaj flasldkjf aewf jaljfv alskjfljea fjejflejjetrj...</p>
                   </Widget.Content>
               </Widget>
+              <Footer>
+
+              </Footer>
           </QuizContainer>
-      </BackgroundImage>
+          <GitHubCorner projectUrl="https://github.com/jamangueira7" />
+      </QuizBackground>
   );
 }
