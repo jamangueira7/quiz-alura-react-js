@@ -47,17 +47,35 @@ const Widget = styled.div`
   }
 `;
 
+Widget.Content = styled.div`
+  padding: 24px 32px 32px 32px;
+  & > *:first-child {
+    margin-top: 0;
+  }
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+`;
+
 export default function Home() {
   return (
       <BackgroundImage>
           <QuizContainer>
               <Widget>
-                  <h1>The legend of zelda</h1>
-                  <p>fasdjflasdfa aflkaj flasldkjf aewf jaljfv alskjfljea fjejflejjetrj...</p>
+                  <Widget.Content>
+                      <h1>The legend of zelda</h1>
+                      <p>fasdjflasdfa aflkaj flasldkjf aewf jaljfv alskjfljea fjejflejjetrj...</p>
+                  </Widget.Content>
               </Widget>
               <Widget>
-                  <h1>Quizes da galera</h1>
-                  <p>fasdjflasdfa aflkaj flasldkjf aewf jaljfv alskjfljea fjejflejjetrj...</p>
+                  <Widget.Content>
+                      <h1>Quizes da galera</h1>
+                      <p>fasdjflasdfa aflkaj flasldkjf aewf jaljfv alskjfljea fjejflejjetrj...</p>
+                  </Widget.Content>
               </Widget>
           </QuizContainer>
       </BackgroundImage>
