@@ -46,6 +46,17 @@ const Widget = styled.div`
     line-height: 1;
   }
 `;
+Widget.Header = styled.header`
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  padding: 18px 32px;
+  background-color: ${({ theme }) => theme.colors.primary};
+  
+  * {
+    margin: 0;
+  }
+`;
 
 Widget.Content = styled.div`
   padding: 24px 32px 32px 32px;
@@ -66,14 +77,18 @@ export default function Home() {
       <BackgroundImage>
           <QuizContainer>
               <Widget>
-                  <Widget.Content>
+                  <Widget.Header>
                       <h1>The legend of zelda</h1>
+                  </Widget.Header>
+                  <Widget.Content>
                       <p>fasdjflasdfa aflkaj flasldkjf aewf jaljfv alskjfljea fjejflejjetrj...</p>
                   </Widget.Content>
               </Widget>
               <Widget>
-                  <Widget.Content>
+                  <Widget.Header>
                       <h1>Quizes da galera</h1>
+                  </Widget.Header>
+                  <Widget.Content>
                       <p>fasdjflasdfa aflkaj flasldkjf aewf jaljfv alskjfljea fjejflejjetrj...</p>
                   </Widget.Content>
               </Widget>
