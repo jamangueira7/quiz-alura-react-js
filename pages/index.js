@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import db from '../db.json';
+import { useRouter } from 'next/router';
 
 import Widget from '../src/components/Widget';
 import QuizBackground from '../src/components/QuizBackground';
@@ -27,7 +28,16 @@ export default function Home() {
             <h1>The legend of zelda</h1>
           </Widget.Header>
           <Widget.Content>
-            <p>fasdjflasdfa aflkaj flasldkjf aewf jaljfv alskjfljea fjejflejjetrj...</p>
+            <form onSubmit={function (e) {
+              e.preventDefault();
+              const router = useRouter();
+              router.push(`/quiz?name=${name}`)
+            }}>
+              <input placeholder="Diz ai seu nome" />
+              <button type="submit">
+                Jogar
+              </button>
+            </form>
           </Widget.Content>
         </Widget>
         <Widget>
