@@ -12,36 +12,54 @@ import Input from '../src/components/Input';
 import Button from '../src/components/Button';
 import GitHubCorner from '../src/components/GitHubCorner';
 
+function LoadingWidget() {
+    return (
+      <Widget>
+          <Widget.Header>
+              <h3>
+                 Carregando...
+              </h3>
+          </Widget.Header>
+          <Widget.Content>
+              [Desafio do Loading]
+          </Widget.Content>
+      </Widget>
+    );
+}
 
-
-export default function Home() {
-    const router = useRouter();
-    const [name, setName] = useState('');
-
+export default function QuizPage() {
     return (
         <QuizBackground backgroundImage={db.bg}>
             <QuizContainer>
                 <QuizLogo />
                 <Widget>
                     <Widget.Header>
-                        <h1>The legend of zelda</h1>
+                        <h3>
+                            Pergunta
+                            1
+                            de
+                            {` ${db.questions.length}`}
+                        </h3>
                     </Widget.Header>
+                    <img
+                        alt="Descrição"
+                        style={{
+                            width: '100%',
+                            height: '150px',
+                            objecFit: 'cover'
+                        }}
+                        src="https://placehold.it/400x400"
+                    />
                     <Widget.Content>
-                        <form onSubmit={function (e) {
-                            e.preventDefault();
-
-                            router.push(`/quiz?name=${name}`)
-                        }}>
-                            <Input
-                                name="nomeDoUsuario"
-                                onChange={ (e) => setName(e.target.value) }
-                                placeholder="Diz ai seu nome"
-                                value={name}
-                            />
-                            <Button type="submit" disabled={name.length === 0}>
-                                {`Jogar ${name}`}
-                            </Button>
-                        </form>
+                        <h2>
+                            Titulo
+                        </h2>
+                        <p>
+                            Descrição
+                        </p>
+                        <Button>
+                            Confirmar
+                        </Button>
                     </Widget.Content>
                 </Widget>
                 <Widget>
@@ -52,7 +70,7 @@ export default function Home() {
                         <p>fasdjflasdfa aflkaj flasldkjf aewf jaljfv alskjfljea fjejflejjetrj...</p>
                     </Widget.Content>
                 </Widget>
-                <Footer />
+                <LoadingWidget />
             </QuizContainer>
             <GitHubCorner projectUrl="https://github.com/jamangueira7" />
         </QuizBackground>
