@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 // src/components/Footer/index.js
@@ -14,11 +15,26 @@ const InputBase = styled.input`
   margin-bottom: 25px;  
 `;
 
-export default function Input(props) {
+export default function Input({ onChange, placeholder, ...props }) {
   return (
   // eslint-disable-next-line react/jsx-props-no-spreading
     <div>
-      <InputBase />
+      <InputBase
+          placeholder={placeholder}
+          onChange={onChange}
+          {...props}
+      />
     </div>
   );
+}
+
+Input.defaultProps = {
+    value: '',
+}
+
+Input.propTypes = {
+    onChange: PropTypes.func.isRequired,
+    placeholder: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    value: PropTypes.string,
 }
