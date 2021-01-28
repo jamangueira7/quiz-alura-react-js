@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import db from '../db.json';
 import { useRouter } from 'next/router';
@@ -27,7 +27,7 @@ function LoadingWidget() {
     );
 }
 
-function QuestionWidget({ question, totalQuestion, questionIndex }) {
+function QuestionWidget({ question, totalQuestion, questionIndex, onSubmit }) {
     const questionId = `question_${questionIndex}`;
 
     return (
@@ -54,7 +54,10 @@ function QuestionWidget({ question, totalQuestion, questionIndex }) {
             <p>
                 {question.description}
             </p>
-            <form>
+            <form onSubmit={(e) => {
+                e.preventDefault();
+                onSubmit();
+            }}>
                 {question.alternatives.map((alternative, index) => {
                     const alternativeId = `alternative_${index}`;
                     return (
@@ -85,11 +88,27 @@ const screenStates = {
 };
 
 export default function QuizPage() {
-    const screenState = 'LOADING';
+    const [screenState, setScreenState] = useState(screenStates.LOADING);
     const totalQuestion = db.questions.length;
-    const questionIndex = 0;
+    const [currentQuestion, setCurrentQuestion] = useState(0);
+    const questionIndex = currentQuestion;
     const question = db.questions[questionIndex];
 
+    useEffect(() => {
+        setTimeout(() => {
+            setScreenState(screenStates.QUIZ);
+        }, 3000);
+    }, [])
+
+
+    function HandleSubmitQuiz() {
+        const nextQuestion = questionIndex + 1;
+        if(nextQuestion < totalQuestion) {
+            setCurrentQuestion(nextQuestion);
+        }else {
+            setScreenState(screenStates.RESULT);
+        }
+    }
     return (
         <QuizBackground backgroundImage={db.bg}>
             <QuizContainer>
@@ -99,6 +118,7 @@ export default function QuizPage() {
                         question={question}
                         questionIndex={questionIndex}
                         totalQuestion={totalQuestion}
+                        onSubmit={HandleSubmitQuiz} 
                     />
                    )}
                 {screenState === screenStates.LOADING && <LoadingWidget/>}
