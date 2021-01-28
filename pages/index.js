@@ -5,7 +5,9 @@ import { useRouter } from 'next/router';
 
 import Widget from '../src/components/Widget';
 import QuizBackground from '../src/components/QuizBackground';
+import QuizLogo from '../src/components/QuizLogo';
 import Footer from '../src/components/Footer';
+import Input from '../src/components/Input';
 import GitHubCorner from '../src/components/GitHubCorner';
 
 export const QuizContainer = styled.div`
@@ -26,6 +28,7 @@ export default function Home() {
   return (
     <QuizBackground backgroundImage={db.bg}>
       <QuizContainer>
+        <QuizLogo />
         <Widget>
           <Widget.Header>
             <h1>The legend of zelda</h1>
@@ -36,7 +39,7 @@ export default function Home() {
 
               router.push(`/quiz?name=${name}`)
             }}>
-              <input
+              <Input
                   onChange={function (e) {
                     setName(e.target.value);
                   }}
