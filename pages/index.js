@@ -4,23 +4,13 @@ import db from '../db.json';
 import { useRouter } from 'next/router';
 
 import Widget from '../src/components/Widget';
+import QuizContainer from '../src/components/QuizContainer';
 import QuizBackground from '../src/components/QuizBackground';
 import QuizLogo from '../src/components/QuizLogo';
 import Footer from '../src/components/Footer';
 import Input from '../src/components/Input';
 import Button from '../src/components/Button';
 import GitHubCorner from '../src/components/GitHubCorner';
-
-export const QuizContainer = styled.div`
-  width: 100%;
-  max-width: 350px;
-  padding-top: 45px;
-  margin: auto 10%;
-  @media screen and (max-width: 500px) {
-      margin: auto;
-      padding: 15px;
-  }
-`;
 
 export default function Home() {
   const router = useRouter();
@@ -47,7 +37,7 @@ export default function Home() {
                   value={name}
               />
               <Button type="submit" disabled={name.length === 0}>
-                Jogar {name}
+                {`Jogar ${name}`}
               </Button>
             </form>
           </Widget.Content>
