@@ -27,49 +27,64 @@ function LoadingWidget() {
     );
 }
 
+function QuestionWidget({ question, totalQuestion, questionIndex }) {
+    return (
+        <Widget>
+        <Widget.Header>
+            <h3>
+                {`Pergunta ${questionIndex + 1} de ${totalQuestion}`}
+
+            </h3>
+        </Widget.Header>
+        <img
+            alt="Descrição"
+            style={{
+                width: '100%',
+                height: '150px',
+                objecFit: 'cover'
+            }}
+            src={question.image}
+        />
+        <Widget.Content>
+            <h2>
+                {question.title}
+            </h2>
+            <p>
+                {question.description}
+            </p>
+            <form>
+                {question.alternatives.map((alternative, index) => {
+                    const alternativeId = `alternative_${index}`;
+                    return (
+                        <label>
+                            {alternative}
+                            <input id={alternativeId}/>
+                        </label>
+                    );
+                })}
+                <Button type="submit">
+                    Confirmar
+                </Button>
+            </form>
+        </Widget.Content>
+    </Widget>
+    );
+}
+
 export default function QuizPage() {
+    const totalQuestion = db.questions.length;
+    const questionIndex = 0;
+    const question = db.questions[questionIndex];
+
     return (
         <QuizBackground backgroundImage={db.bg}>
             <QuizContainer>
                 <QuizLogo />
-                <Widget>
-                    <Widget.Header>
-                        <h3>
-                            Pergunta
-                            1
-                            de
-                            {` ${db.questions.length}`}
-                        </h3>
-                    </Widget.Header>
-                    <img
-                        alt="Descrição"
-                        style={{
-                            width: '100%',
-                            height: '150px',
-                            objecFit: 'cover'
-                        }}
-                        src="https://placehold.it/400x400"
+                    <QuestionWidget
+                        question={question}
+                        questionIndex={questionIndex}
+                        totalQuestion={totalQuestion}
                     />
-                    <Widget.Content>
-                        <h2>
-                            Titulo
-                        </h2>
-                        <p>
-                            Descrição
-                        </p>
-                        <Button>
-                            Confirmar
-                        </Button>
-                    </Widget.Content>
-                </Widget>
-                <Widget>
-                    <Widget.Header>
-                        <h1>Quizes da galera</h1>
-                    </Widget.Header>
-                    <Widget.Content>
-                        <p>fasdjflasdfa aflkaj flasldkjf aewf jaljfv alskjfljea fjejflejjetrj...</p>
-                    </Widget.Content>
-                </Widget>
                 <LoadingWidget />
             </QuizContainer>
             <GitHubCorner projectUrl="https://github.com/jamangueira7" />
