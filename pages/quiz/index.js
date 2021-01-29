@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import db from '../db.json';
+import db from '../../db.json';
 import { useRouter } from 'next/router';
 
-import Widget from '../src/components/Widget';
-import QuizContainer from '../src/components/QuizContainer';
-import QuizBackground from '../src/components/QuizBackground';
-import QuizLogo from '../src/components/QuizLogo';
-import AlternativeForm from '../src/components/AlternativeForm';
-import Button from '../src/components/Button';
-import GitHubCorner from '../src/components/GitHubCorner';
+import Widget from '../../src/components/Widget';
+import QuizContainer from '../../src/components/QuizContainer';
+import QuizBackground from '../../src/components/QuizBackground';
+import QuizLogo from '../../src/components/QuizLogo';
+import AlternativeForm from '../../src/components/AlternativeForm';
+import Button from '../../src/components/Button';
+import GitHubCorner from '../../src/components/GitHubCorner';
 
 function LoadingWidget() {
     return (

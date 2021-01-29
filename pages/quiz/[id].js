@@ -7,3 +7,9 @@ export default function QuizDaGaleraPage() {
       </div>
     );
 }
+
+export async function getServerSideProps(context) {
+    return {
+        props: {},
+    };
+}
