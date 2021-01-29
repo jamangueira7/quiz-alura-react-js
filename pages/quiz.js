@@ -28,7 +28,11 @@ function LoadingWidget() {
 }
 
 function QuestionWidget({ question, totalQuestion, questionIndex, onSubmit }) {
+    const [selectedAlternative, setSelectedAlternative] = useState(undefined);
+    const [isQuestionSubmited, setIsQuestionSubmited] = useState(false);
     const questionId = `question_${questionIndex}`;
+    const isCorret = selectedAlternative === question.answer;
+    const hasAlternativeSelected = selectedAlternative !== undefined;
 
     return (
         <Widget>
@@ -56,25 +60,38 @@ function QuestionWidget({ question, totalQuestion, questionIndex, onSubmit }) {
             </p>
             <form onSubmit={(e) => {
                 e.preventDefault();
-                onSubmit();
+                setIsQuestionSubmited(true);
+                setTimeout(() => {
+                    onSubmit();
+                    setIsQuestionSubmited(false);
+                }, 3000);
             }}>
                 {question.alternatives.map((alternative, index) => {
                     const alternativeId = `alternative_${index}`;
                     return (
-                        <Widget.Topic as="label" htmlFor={alternativeId}>
+                        <Widget.Topic
+                            key={alternativeId}
+                            as="label"
+                            htmlFor={alternativeId}
+                        >
                             <input
                                 style={{ display: 'none' }}
                                 id={alternativeId}
                                 type="radio"
+                                onChange={() => setSelectedAlternative(index)}
                                 name={questionId}
                             />
                             {alternative}
                         </Widget.Topic>
                     );
                 })}
-                <Button type="submit">
+
+                <Button type="submit" disabled={!hasAlternativeSelected}>
                     Confirmar
                 </Button>
+
+                {isQuestionSubmited && isCorret && <p>Você acertou!</p>}
+                {isQuestionSubmited && !isCorret && <p>Você errou!</p>}
             </form>
         </Widget.Content>
     </Widget>
@@ -118,7 +135,7 @@ export default function QuizPage() {
                         question={question}
                         questionIndex={questionIndex}
                         totalQuestion={totalQuestion}
-                        onSubmit={HandleSubmitQuiz} 
+                        onSubmit={HandleSubmitQuiz}
                     />
                    )}
                 {screenState === screenStates.LOADING && <LoadingWidget/>}
