@@ -19,7 +19,7 @@ const screenStates = {
 export default function QuizPage({ externalQuestions, externalBg }) {
     const router = useRouter();
     const name = router.query.name;
-    const [screenState, setScreenState] = useState(screenStates.QUIZ);
+    const [screenState, setScreenState] = useState(screenStates.LOADING);
     const [results, setResult] = useState([]);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const questionIndex = currentQuestion;

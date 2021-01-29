@@ -20,7 +20,7 @@ const screenStates = {
 export default function QuizPage() {
     const router = useRouter();
     const name = router.query.name;
-    const [screenState, setScreenState] = useState(screenStates.QUIZ);
+    const [screenState, setScreenState] = useState(screenStates.LOADING);
     const [results, setResult] = useState([]);
     const totalQuestion = db.questions.length;
     const [currentQuestion, setCurrentQuestion] = useState(0);
