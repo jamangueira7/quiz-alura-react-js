@@ -36,9 +36,10 @@ function ResultWidget({ results }) {
                 </h3>
             </Widget.Header>
             <Widget.Content>
-                <p>Você acertou {results.reduce((somatoriaAtual, resultAtual) => {
-                    return resultAtual === true && resultAtual+1;
-                }, 0)} perguntas!
+                <p>
+                    Você acertou {results.reduce((somatoriaAtual, resultAtual) => {
+                        return resultAtual === true && resultAtual+1;
+                    }, 0)} perguntas!
                 </p>
                 <ul>
                     {results.map((result, index) => (
@@ -52,12 +53,18 @@ function ResultWidget({ results }) {
     );
 }
 
-function QuestionWidget({ question, totalQuestion, questionIndex, onSubmit }) {
+function QuestionWidget({
+    question,
+    totalQuestion,
+    questionIndex,
+    onSubmit,
+    addResult,
+}) {
 
     const [selectedAlternative, setSelectedAlternative] = useState(undefined);
     const [isQuestionSubmited, setIsQuestionSubmited] = useState(false);
     const questionId = `question_${questionIndex}`;
-    const isCorret = selectedAlternative === question.answer;
+    const isCorrect = selectedAlternative === question.answer;
     const hasAlternativeSelected = selectedAlternative !== undefined;
 
     return (
@@ -88,6 +95,7 @@ function QuestionWidget({ question, totalQuestion, questionIndex, onSubmit }) {
                 e.preventDefault();
                 setIsQuestionSubmited(true);
                 setTimeout(() => {
+                    addResult(isCorrect);
                     onSubmit();
                     setIsQuestionSubmited(false);
                     setSelectedAlternative(undefined);
@@ -117,8 +125,8 @@ function QuestionWidget({ question, totalQuestion, questionIndex, onSubmit }) {
                     Confirmar
                 </Button>
 
-                {isQuestionSubmited && isCorret && <p>Você acertou!</p>}
-                {isQuestionSubmited && !isCorret && <p>Você errou!</p>}
+                {isQuestionSubmited && isCorrect && <p>Você acertou!</p>}
+                {isQuestionSubmited && !isCorrect && <p>Você errou!</p>}
             </form>
         </Widget.Content>
     </Widget>
@@ -132,16 +140,23 @@ const screenStates = {
 };
 
 export default function QuizPage() {
-    const [screenState, setScreenState] = useState(screenStates.RESULT);
-    const [results, setResult] = useState([true, false, true]);
+    const [screenState, setScreenState] = useState(screenStates.QUIZ);
+    const [results, setResult] = useState([]);
     const totalQuestion = db.questions.length;
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const questionIndex = currentQuestion;
     const question = db.questions[questionIndex];
 
+    function addResult(result) {
+        setResult([
+            ...results,
+            result,
+        ]);
+    }
+
     useEffect(() => {
         setTimeout(() => {
-            //setScreenState(screenStates.QUIZ);
+            setScreenState(screenStates.QUIZ);
         }, 3000);
     }, [])
 
@@ -164,6 +179,7 @@ export default function QuizPage() {
                         questionIndex={questionIndex}
                         totalQuestion={totalQuestion}
                         onSubmit={HandleSubmitQuiz}
+                        addResult={addResult}
                     />
                    )}
                 {screenState === screenStates.LOADING && <LoadingWidget/>}
