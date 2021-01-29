@@ -9,6 +9,7 @@ import QuizLogo from '../../components/QuizLogo';
 import AlternativeForm from '../../components/AlternativeForm';
 import Button from '../../components/Button';
 import GitHubCorner from '../../components/GitHubCorner';
+import BackLinkArrow from '../../components/BackLinkArrow';
 
 function LoadingWidget() {
     return (
@@ -68,6 +69,8 @@ function QuestionWidget({
     return (
         <Widget>
             <Widget.Header>
+                <BackLinkArrow href="/" />
+                { console.log('fadfadsf')}
                 <h3>
                     {`Pergunta ${questionIndex + 1} de ${totalQuestion}`}
 

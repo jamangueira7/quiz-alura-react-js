@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import db from '../db.json';
 
 import Widget from '../src/components/Widget';
+import Link from '../src/components/Link';
 import QuizContainer from '../src/components/QuizContainer';
 import QuizBackground from '../src/components/QuizBackground';
 import QuizLogo from '../src/components/QuizLogo';
@@ -19,13 +20,21 @@ export default function Home() {
 
   return (
     <QuizBackground backgroundImage={db.bg}>
+      <Head>
+        <title>
+          AluraQuiz -
+          {db.title}
+        </title>
+      </Head>
       <QuizContainer>
         <QuizLogo />
         <Widget>
+
           <Widget.Header>
-            <h1>The legend of zelda</h1>
+            <h1>{db.title}</h1>
           </Widget.Header>
           <Widget.Content>
+            <p>{db.description}</p>
             <form onSubmit={function (e) {
               e.preventDefault();
 
@@ -57,6 +66,7 @@ export default function Home() {
                 return (
                     <li key={link}>
                       <Widget.Topic
+                          as={Link}
                           href={`/quiz/${projectName}___${gitHubUser}`}
                       >
                         {`${gitHubUser}/${projectName}`}
