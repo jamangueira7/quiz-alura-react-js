@@ -26,7 +26,7 @@ function LoadingWidget() {
     );
 }
 
-function ResultWidget({ results }) {
+function ResultWidget({ results, name }) {
     return (
         <Widget>
             <Widget.Header>
@@ -36,7 +36,7 @@ function ResultWidget({ results }) {
             </Widget.Header>
             <Widget.Content>
                 <p>
-                    Você acertou {results.reduce((somatoriaAtual, resultAtual) => {
+                    {name}, você acertou {results.reduce((somatoriaAtual, resultAtual) => {
                         return resultAtual === true && resultAtual+1;
                     }, 0)} perguntas!
                 </p>
@@ -146,6 +146,8 @@ const screenStates = {
 };
 
 export default function QuizPage() {
+    const router = useRouter();
+    const name = router.query.name;
     const [screenState, setScreenState] = useState(screenStates.QUIZ);
     const [results, setResult] = useState([]);
     const totalQuestion = db.questions.length;
@@ -189,7 +191,7 @@ export default function QuizPage() {
                     />
                    )}
                 {screenState === screenStates.LOADING && <LoadingWidget/>}
-                {screenState === screenStates.RESULT && <ResultWidget results={results} />}
+                {screenState === screenStates.RESULT && <ResultWidget results={results} name={name} />}
             </QuizContainer>
             <GitHubCorner projectUrl="https://github.com/jamangueira7" />
         </QuizBackground>
