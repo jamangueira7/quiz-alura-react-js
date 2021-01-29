@@ -27,7 +27,33 @@ function LoadingWidget() {
     );
 }
 
+function ResultWidget({ results }) {
+    return (
+        <Widget>
+            <Widget.Header>
+                <h3>
+                    Tela de resultado
+                </h3>
+            </Widget.Header>
+            <Widget.Content>
+                <p>Você acertou {results.reduce((somatoriaAtual, resultAtual) => {
+                    return resultAtual === true && resultAtual+1;
+                }, 0)} perguntas!
+                </p>
+                <ul>
+                    {results.map((result, index) => (
+                        <li>
+                            #{index + 1} Resultado: { result === true ? 'Acertou': 'Errou' }
+                        </li>
+                    ))}
+                </ul>
+            </Widget.Content>
+        </Widget>
+    );
+}
+
 function QuestionWidget({ question, totalQuestion, questionIndex, onSubmit }) {
+
     const [selectedAlternative, setSelectedAlternative] = useState(undefined);
     const [isQuestionSubmited, setIsQuestionSubmited] = useState(false);
     const questionId = `question_${questionIndex}`;
@@ -64,6 +90,7 @@ function QuestionWidget({ question, totalQuestion, questionIndex, onSubmit }) {
                 setTimeout(() => {
                     onSubmit();
                     setIsQuestionSubmited(false);
+                    setSelectedAlternative(undefined);
                 }, 3000);
             }}>
                 {question.alternatives.map((alternative, index) => {
@@ -105,7 +132,8 @@ const screenStates = {
 };
 
 export default function QuizPage() {
-    const [screenState, setScreenState] = useState(screenStates.LOADING);
+    const [screenState, setScreenState] = useState(screenStates.RESULT);
+    const [results, setResult] = useState([true, false, true]);
     const totalQuestion = db.questions.length;
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const questionIndex = currentQuestion;
@@ -113,7 +141,7 @@ export default function QuizPage() {
 
     useEffect(() => {
         setTimeout(() => {
-            setScreenState(screenStates.QUIZ);
+            //setScreenState(screenStates.QUIZ);
         }, 3000);
     }, [])
 
@@ -139,7 +167,7 @@ export default function QuizPage() {
                     />
                    )}
                 {screenState === screenStates.LOADING && <LoadingWidget/>}
-                {screenState === screenStates.RESULT && <div>Voce acertou x perguntas, Parabens!</div>}
+                {screenState === screenStates.RESULT && <ResultWidget results={results} />}
             </QuizContainer>
             <GitHubCorner projectUrl="https://github.com/jamangueira7" />
         </QuizBackground>
