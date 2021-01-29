@@ -37,16 +37,24 @@ export default function QuizPage({ externalQuestions, externalBg }) {
     useEffect(() => {
         setTimeout(() => {
             setScreenState(screenStates.QUIZ);
-        }, 3000);
+        }, 2000);
     }, [])
 
 
     function HandleSubmitQuiz() {
         const nextQuestion = questionIndex + 1;
+        setScreenState(screenStates.LOADING);
         if(nextQuestion < totalQuestion) {
-            setCurrentQuestion(nextQuestion);
+            setTimeout(() => {
+                setScreenState(screenStates.QUIZ);
+                setCurrentQuestion(nextQuestion);
+            }, 800);
+
         }else {
-            setScreenState(screenStates.RESULT);
+            setTimeout(() => {
+                setScreenState(screenStates.RESULT);
+            }, 800);
+
         }
     }
     return (
