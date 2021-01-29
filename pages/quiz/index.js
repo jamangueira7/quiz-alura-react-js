@@ -10,6 +10,7 @@ import QuizLogo from '../../src/components/QuizLogo';
 import AlternativeForm from '../../src/components/AlternativeForm';
 import Button from '../../src/components/Button';
 import GitHubCorner from '../../src/components/GitHubCorner';
+import BackLinkArrow from '../../src/components/BackLinkArrow';
 
 function LoadingWidget() {
     return (
@@ -30,15 +31,14 @@ function ResultWidget({ results, name }) {
     return (
         <Widget>
             <Widget.Header>
+                <BackLinkArrow href="/" />
                 <h3>
                     Tela de resultado
                 </h3>
             </Widget.Header>
             <Widget.Content>
                 <p>
-                    {name}, você acertou {results.reduce((somatoriaAtual, resultAtual) => {
-                        return resultAtual === true && resultAtual+1;
-                    }, 0)} perguntas!
+                    {name}, você acertou {results.filter((x) => x).length} perguntas!
                 </p>
                 <ul>
                     {results.map((result, index) => (

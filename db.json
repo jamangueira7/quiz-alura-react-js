@@ -1,28 +1,136 @@
 {
-  "bg": "https://i2.wp.com/css-tricks.com/wp-content/uploads/2017/06/css-is-awesome-scaled.jpg?resize=1536%2C1208&ssl=1",
-  "title": "Quiz CSS da Alura",
-  "description": "Teste os seus conhecimentos sobre CSS e vamos ver quantos layouts você vai deixar de quebrar",
+  "bg": "https://www.marketplace.org/wp-content/uploads/2018/07/GettyImages-453347919.jpg?fit=1800%2C1000",
+  "title": "Quiz Copa do Mundo",
+  "description": "Teste os seus conhecimentos sobre o campeonato mais importante do esporte mais praticado do mundo.",
   "questions": [
     {
-      "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
-      "title": "Como fazer um seletor por id via CSS?",
+      "image": "https://img.r7.com/images/2018/02/02/4b8vk5pd2g_55aoabdv7p_file",
+      "title": "Qual o maior campeão do torneio?",
       "description": "Essa é pra aquecer",
-      "answer": 2,
+      "answer": 4,
       "alternatives": [
-        ".elemento",
-        "*elemento",
-        "#elemento",
-        "%elemento"
+        "Italia",
+        "Alemanha",
+        "França",
+        "Inglaterra",
+        "Brasil"
       ]
     },
     {
-      "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
-      "title": "Como fazer um background gradiente com css?",
-      "description": "Faz tempo em haha",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Uruguay_goal_v_argentina_1930.jpg",
+      "title": "Qual foi o primeiro campeão?",
+      "description": "Faz tempo em...",
+      "answer": 2,
+      "alternatives": [
+        "Italia",
+        "Brasil",
+        "Uruguai",
+        "Alemanha",
+        "Argentina"
+      ]
+    },
+    {
+      "image": "https://img.fifa.com/image/upload/t_l1/z5juf40uxox2ykkuvze9.jpg",
+      "title": "Qual o nome da primeira taça da Copa do Mundo?",
+      "description": "Facil...",
       "answer": 0,
       "alternatives": [
-        "background: linear-gradient(#e66465, #9198e5);",
-        "background: gradient(#e66465, #9198e5);"
+        "Jules Rimet",
+        "Word Cup",
+        "Taça FIFA",
+        "João Havelange",
+        "Word Trophy"
+      ]
+    },
+    {
+      "image": "https://img.fifa.com/image/upload/t_l4/tsagnwfcatjrqu7ywqls.jpg",
+      "title": "Quem é o jogador em atividade com mais gols em Copas?",
+      "description": "Estamos em 2021",
+      "answer": 3,
+      "alternatives": [
+        "Leonel Messi",
+        "Sun",
+        "Cristiano Ronaldo",
+        "Thomas Müller",
+        "Neymar Jr."
+      ]
+    },
+    {
+      "image": "https://img.fifa.com/image/upload/t_s2/jowph9ddmb0gypf7wcda.jpg",
+      "title": "Qual jogador tem mais titulos?",
+      "description": "Estamos começando a complicar",
+      "answer": 3,
+      "alternatives": [
+        "Ronaldo",
+        "Maradona",
+        "Zidane",
+        "Pele",
+        "Franz Beckenbauer"
+      ]
+    },
+    {
+      "image": "https://lh3.googleusercontent.com/proxy/Pj5QnVrIBiTg8WBi1hH4Zw6WcOUsd8QdfTI0DbpBtgoDjEighpUADpVD1uiNvTFT7kqyE8pmUWzoEF9YgdP6sHCpfS12HSa3_fSMDmqzm5HFXsqdVjjmnunW7OdAJvpfQfDInhtu",
+      "title": "Quantas pessoas foram campeães como tecnico e jogador?",
+      "description": "Essa é mais dificil",
+      "answer": 2,
+      "alternatives": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    {
+      "image": "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2018/07/14/15315983620308.jpg",
+      "title": "Quem são as pessoas que foram campeães como tecnico e jogador?",
+      "description": "Complementando a anterior",
+      "answer": 1,
+      "alternatives": [
+        "Dunga, Raymond Domenech, Marcello Lippi e Daniel Passarella",
+        "Mário Jorge Lobo Zagallo, Franz Beckenbauer e Didier Deschamps",
+        "Raymond Domenech, Mário Jorge Lobo Zagallo e Marcello Lippi",
+        "Felipão, Didier Deschamps e Franz Beckenbauer",
+        "Alf Ramsey, Mário Jorge Lobo Zagallo, Franz Beckenbauer e Carlos Bilardo"
+      ]
+    },
+    {
+      "image": "https://i.pinimg.com/736x/68/f6/18/68f618bc3690f446e736e019b5a2ca7f.jpg",
+      "title": "Qual confronto mais se repetiu em finais?",
+      "description": "Essa é para quem sabe...",
+      "answer": 4,
+      "alternatives": [
+        "Argentina x Uruguai",
+        "França x Brasil",
+        "Brasil x Italia",
+        "Italia x Alemanha",
+        "Alemanha x Argentina"
+      ]
+    },
+    {
+      "image": "https://www.sportsnet.ca/wp-content/uploads/2014/06/WC_1966.jpg",
+      "title": "Qual o maior artilheiro em Copas?",
+      "description": "Bem facil...",
+      "answer": 2,
+      "alternatives": [
+        "Ronaldo",
+        "Thomas Müller",
+        "Miroslav Klose",
+        "Leonel Messi",
+        "Pêle"
+      ]
+    },
+    {
+      "image": "https://d3nfwcxd527z59.cloudfront.net/content/uploads/2018/06/04101505/France-1998-World-Cup.jpg",
+      "title": "Qual time foi campeão vencendo todas as partidas?",
+      "description": "Essa é para aficionado...",
+      "answer": 1,
+      "alternatives": [
+        "França 2018",
+        "Brasil 2002",
+        "Alemanha 1974",
+        "Brasil 1970",
+        "Argentina 1986"
       ]
     }
   ],
