@@ -9,15 +9,9 @@ const RightComponent = styled.div`
   background-color: ${({ theme }) => `${theme.colors.success}`};
   padding: 10px;
   margin: 8px;
-  cursor: pointer;
   border-radius: ${({ theme }) => theme.borderRadius};
   transition: .3s;
   display: block;
-  
-  &:hover,
-  &:focus {
-    opacity: .5;
-  }
 `;
 
 export default function Right({ ...props }) {
