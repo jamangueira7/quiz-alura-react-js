@@ -7,8 +7,7 @@ import Widget from '../src/components/Widget';
 import QuizContainer from '../src/components/QuizContainer';
 import QuizBackground from '../src/components/QuizBackground';
 import QuizLogo from '../src/components/QuizLogo';
-import Footer from '../src/components/Footer';
-import Input from '../src/components/Input';
+import AlternativeForm from '../src/components/AlternativeForm';
 import Button from '../src/components/Button';
 import GitHubCorner from '../src/components/GitHubCorner';
 
@@ -43,7 +42,7 @@ function ResultWidget({ results }) {
                 </p>
                 <ul>
                     {results.map((result, index) => (
-                        <li>
+                        <li key={`result_${index}`}>
                             #{index + 1} Resultado: { result === true ? 'Acertou': 'Errou' }
                         </li>
                     ))}
@@ -91,23 +90,30 @@ function QuestionWidget({
             <p>
                 {question.description}
             </p>
-            <form onSubmit={(e) => {
-                e.preventDefault();
-                setIsQuestionSubmited(true);
-                setTimeout(() => {
-                    addResult(isCorrect);
-                    onSubmit();
-                    setIsQuestionSubmited(false);
-                    setSelectedAlternative(undefined);
-                }, 3000);
-            }}>
+            <AlternativeForm
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    setIsQuestionSubmited(true);
+                    setTimeout(() => {
+                        addResult(isCorrect);
+                        onSubmit();
+                        setIsQuestionSubmited(false);
+                        setSelectedAlternative(undefined);
+                    }, 3000);
+                }}
+            >
                 {question.alternatives.map((alternative, index) => {
                     const alternativeId = `alternative_${index}`;
+                    const alternativeStatus =  isCorrect ? 'SUCCESS' : 'ERROR';
+                    const isSelectd =  selectedAlternative === index;
+
                     return (
                         <Widget.Topic
                             key={alternativeId}
                             as="label"
                             htmlFor={alternativeId}
+                            data-selected={isSelectd}
+                            data-status={isQuestionSubmited && alternativeStatus}
                         >
                             <input
                                 style={{ display: 'none' }}
@@ -127,7 +133,7 @@ function QuestionWidget({
 
                 {isQuestionSubmited && isCorrect && <p>Você acertou!</p>}
                 {isQuestionSubmited && !isCorrect && <p>Você errou!</p>}
-            </form>
+            </AlternativeForm>
         </Widget.Content>
     </Widget>
     );
