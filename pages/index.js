@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import db from '../db.json';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
+import db from '../db.json';
 
 import Widget from '../src/components/Widget';
 import QuizContainer from '../src/components/QuizContainer';
@@ -52,9 +53,12 @@ export default function Home() {
                     .replace('https:','')
                     .replace('.vercel.app','')
                     .split('.');
+
                 return (
                     <li key={link}>
-                      <Widget.Topic href={link}>
+                      <Widget.Topic
+                          href={`/quiz/${projectName}___${gitHubUser}`}
+                      >
                         {`${gitHubUser}/${projectName}`}
                       </Widget.Topic>
                     </li>

@@ -1,10 +1,21 @@
 import React from 'react';
+import { ThemeProvider } from 'styled-components';
+import QuizScreen from '../../src/screens/Quiz';
 
-export default function QuizDaGaleraPage() {
+export default function QuizDaGaleraPage({ dbExterno }) {
+    // const [db, setDb] React.useState({})
+    // React.useEffect(() => {
+    // });
     return (
-      <div>
-          Desafio
-      </div>
+        <ThemeProvider theme={dbExterno.theme}>
+            <QuizScreen
+                externalQuestions={dbExterno.questions}
+                externalBg={dbExterno.bg}
+            />
+        </ThemeProvider>
+        // {/* <pre style={{ color: 'black' }}>
+        //   {JSON.stringify(dbExterno.questions, null, 4)}
+        // </pre> */}
     );
 }
 
